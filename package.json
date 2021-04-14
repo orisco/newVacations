@@ -21,9 +21,14 @@
   "devDependencies": {},
   "scripts": {
     "start": "node index.js",
-    "build": "npm install --prefix frontend/client && npm run build --prefix frontend/client"
+    "build": "npm install --prefix client && npm run build --prefix client"
   },
+
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "14.x"
+  }
 }
+
