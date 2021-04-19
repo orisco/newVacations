@@ -28,21 +28,25 @@ export default function Login() {
 
   return (
     <div>
-    {/* {token ? history.push(`/vacations/${username}`) :  */}
-    <div className="page">
-    <div className="form">
-      <h1>Login</h1>
-      <h3 className={error ? "redAlert" : ""}>{error ? error : `We are a members-only site. Please login or register.`}</h3>
-      <div className="fields">
-          <label>Username</label>
-          <input type="text" placeholder="Type in your username" onChange={(e) => setUsername(e.target.value)}></input>
-          <label>Password</label>
-          <input type="password" placeholder="Type in your password" onChange={(e) => setPassword(e.target.value)}></input>
+      <div className="page">
+        <div className="form">
+
+          <h1>Login</h1>
+
+          <h3 className={error ? "redAlert" : ""}>{error ? error : `We are a members-only site. Please login or register.`}</h3>
+
+          <div className="fields">
+              <label>Username</label>
+              <input type="text" placeholder="Type in your username" onChange={(e) => setUsername(e.target.value)}></input>
+              <label>Password</label>
+                <input type="password" placeholder="Type in your password" onChange={(e) => setPassword(e.target.value)}></input>
+          </div>
+
+          <button onClick={() => logIn()}>Log In</button>
+          
+          <p>First time here? <span className="link" onClick={() => history.push("/register")}>Sign up</span></p>   
+        </div>
       </div>
-      <button onClick={() => logIn()}>Log In</button>
-      <p>First time here? <span className="link" onClick={() => history.push("/register")}>Sign up</span></p>   
-      </div>
-    </div>
     </div>
       
 
