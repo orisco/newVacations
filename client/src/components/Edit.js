@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {useSelector} from "react-redux"
+import config from '../config/config'
 
 export default function Edit({vacation, setEdit, setUpdate}) {
   const state = useSelector((state) => state.user)
@@ -14,7 +15,7 @@ export default function Edit({vacation, setEdit, setUpdate}) {
 
   const submitEdit = async () => {
     if(!destination || !description || !accommodation || !startDate || !endDate || !price || !image) return alert("you must fill-in all fields")
-    await fetch (`http://localhost:2020/admin/update/${vacation.vacation_id}`, {
+    await fetch (config.siteURL + `/admin/update/${vacation.vacation_id}`, {
     method: "put",
     headers: {'Content-Type':'application/json', 'Authorization': state[0].token},
     body: JSON.stringify({destination, description, accommodation, start_date: startDate, end_date: endDate, price, image})

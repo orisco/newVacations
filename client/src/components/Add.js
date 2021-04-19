@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Cookies from 'universal-cookie';
+import config from '../config/config'
 
 export default function Add( {setUpdate}) {
   const cookie = new Cookies();
@@ -16,7 +17,7 @@ export default function Add( {setUpdate}) {
 
   const addVacation = async () => {
     if(!destination || !description || !accommodation || !startDate || !endDate || !price || !image) return alert("you must fill-in all fields")
-    await fetch (`http://localhost:2020/admin/add`, {
+    await fetch (config.siteURL + `/admin/add`, {
       method: "post",
       headers: {'Content-Type':'application/json', 'Authorization': token},
       body: JSON.stringify({destination, description, accommodation, start_date: startDate, end_date: endDate, price, image})

@@ -4,6 +4,7 @@ import Cookies from 'universal-cookie';
 import VacationListCard from './VacationListCard';
 import {useDispatch, useSelector} from "react-redux"
 import Add from './Add';
+import config from '../config/config'
 
 export default function VacationList() {
   const card = useSelector((state) => state.card)
@@ -21,7 +22,7 @@ export default function VacationList() {
 
   useEffect(() => {
     (async () => {
-        const res = await fetch("http://localhost:2020/users/all", {
+        const res = await fetch(config.siteURL + "/users/all", {
           method: "get",
         headers: {'Content-Type':'application/json', 'Authorization': token}
       }) 

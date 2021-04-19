@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Cookies from 'universal-cookie';
 import {useHistory} from "react-router-dom";
+import config from '../config/config'
 
 export default function Login() {
   const [username, setUsername] = useState("")
@@ -8,13 +9,13 @@ export default function Login() {
   const [error, setError] = useState("")
   const history = useHistory()
   const cookie = new Cookies();
-  const token = cookie.get('token')
+  // const token = cookie.get('token')
   
   // log out in 10 minutes
   let expireTime = new Date(new Date().getTime() + 10 * 60 * 1000);
 
   const logIn = async () => {
-      const res = await fetch ("http://localhost:2020/auth/login", {
+      const res = await fetch (config.siteURL + "/auth/login", {
       method: "post",
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({username, password})

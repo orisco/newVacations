@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {useSelector} from "react-redux"
 import Edit from './Edit'
+import config from '../config/config'
 
 export default function VacationListCard({vacation, token, setUpdate}) {
   const state = useSelector((state) => state.user)
@@ -9,7 +10,7 @@ export default function VacationListCard({vacation, token, setUpdate}) {
 
   const adminDelete = async () => {
     const id = vacation.vacation_id
-      const res = await fetch (`http://localhost:2020/admin/delete/${id}`, {
+      const res = await fetch (config.siteURL + `/admin/delete/${id}`, {
       method: "delete",
       headers: {'Content-Type':'application/json', 'Authorization': token}
     })
@@ -24,7 +25,7 @@ export default function VacationListCard({vacation, token, setUpdate}) {
   const follow = async (binary) => {
     console.log(binary)
     const id = vacation.vacation_id
-    await fetch (`http://localhost:2020/users/like/${id}`, {
+    await fetch (config.siteURL + `/users/like/${id}`, {
       method: "put",
       headers: {'Content-Type':'application/json', 'Authorization': token},
       body: JSON.stringify({binary})

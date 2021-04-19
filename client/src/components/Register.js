@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import {useHistory} from "react-router-dom";
+import config from '../config/config'
 
 export default function Register() {
 const [name, setName] = useState("")
@@ -9,7 +10,7 @@ const [error, setError] = useState("")
 const history = useHistory()
   
   const registerUser = async () => {
-    const res = await fetch ("http://localhost:2020/auth/new", {
+    const res = await fetch (config.siteURL + "/auth/new", {
       method: "post",
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({name: name, username: username, password: password})

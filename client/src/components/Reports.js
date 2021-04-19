@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {useSelector} from "react-redux"
 import { useHistory } from 'react-router';
 import { VictoryBar, VictoryChart, VictoryLabel } from 'victory';
+import config from '../config/config'
 
 export default function Reports() {
   const state = useSelector((state) => state.user)
@@ -10,7 +11,7 @@ export default function Reports() {
 
   useEffect(() => {
     (async () => {
-        const res = await fetch("http://localhost:2020/users/all", {
+        const res = await fetch(config.siteURL + "/users/all", {
           method: "get",
         headers: {'Content-Type':'application/json', 'Authorization': state[0].token}
       }) 
